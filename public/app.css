@@ -1,0 +1,13 @@
+body{
+  font-family: 'Oswald', sans-serif;
+}
+.padded-nav{
+  padding:10px;
+  background-color: #89D69E;
+}
+.nav-font{
+  color:#BA7779!important
+}
+a:hover{
+  color:#275935!important
+}
