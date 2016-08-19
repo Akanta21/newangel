@@ -1,5 +1,5 @@
 /* globals angular */
-angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
+angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap'])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
