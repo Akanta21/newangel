@@ -1,0 +1,49 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" ng-click="$hide()">&times;</span>
+        </button>
+        <h4 class="modal-title" id="exampleModalLabel">{{default.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="item-name" class="form-control-label">Item Name:</label>
+            <input type="text" class="form-control" id="item-name" ng-model="default.name">
+          </div>
+          <div class="form-group">
+            <label for="item-price" class="form-control-label">Price: ($)</label>
+            <input type="number" class="form-control" id="item-price" ng-model="default.price">
+          </div>
+          <div class="form-group">
+            <label for="item-stock-quantity" class="form-control-label">Stock:</label>
+            <input type="number" class="form-control" id="item-stock-quantity" ng-model="default.stock">
+          </div>
+          <div class="form-group">
+            <label for="item-categories" class="form-control-label">Categories:</label>
+            <input type="text" class="form-control" id="item-categories" placeholder="Required" ng-model="default.categories">
+          </div>
+          <div class="form-group">
+            <label for="item-description" class="form-control-label">Description:</label>
+            <textarea class="form-control" id="item-description" placeholder="Required" ng-model="default.description"></textarea>
+          </div>
+          <a class = "thumbnail">
+            <img ng-src ="{{selectedimage}}" alt = "Generic" >
+          </a>
+          <button type="button" class="btn btn-lg btn-danger" data-template-url="components/aside/pictAside.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">Select Picture
+            <br>
+          </button>
+          <hr/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+        class="btn btn-secondary pull-left"
+        ng-click="$hide()">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="addNewProduct()">Create a new item</button>
+      </div>
+    </div>
+  </div>
+</div>

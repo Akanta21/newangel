@@ -2,6 +2,7 @@ angular.module('angelApp')
   .controller('navbarCtrl', function ($scope, $location, $window) {
     $scope.isLoggedIn = false
     $scope.isAdmin = false
+    $scope.cartEmpty = true
     $scope.user = $window.localStorage.name
 
     $scope.logout = function () {

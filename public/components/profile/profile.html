@@ -2,18 +2,18 @@
     <div class="row">
       <div class="col-md-8">
         <div class="profile">
-          <h1 class="page-header">{{ $ctrl.user.name }}</h1>
+          <h1 class="page-header">{{ $ctrl.name }}</h1>
           <div class="row">
             <div class="col-md-4">
               <img src="img/profile.jpg" class="img-thumbnail">
             </div>
             <div class="col-md-5 profile">
               <ul>
-                <li><strong>Name:</strong> {{ $ctrl.user.name }}</li>
-                <li><strong>Email: </strong>{{ $ctrl.user.email }}</li>
-                <li ng-repeat="purchase in purchases"><strong>Purchase history:</strong>
+                <li><strong>Name:</strong> {{ $ctrl.name }}</li>
+                <li><strong>Email: </strong>{{ $ctrl.email }}</li>
+                <!-- <li ng-repeat="purchase in purchases"><strong>Purchase history:</strong>
                   <p>{{$ctrl.purchase}}</p>
-                </li>
+                </li> -->
               </ul>
               <br><br>
           </div>

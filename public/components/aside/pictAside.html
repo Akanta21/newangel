@@ -1,0 +1,21 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" ng-click="$hide()">&times;</span>
+        </button>
+        <h4 class="modal-title" id="exampleModalLabel">Select a picture</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "row">
+          <div class = "col-sm-6 col-md-3" ng-repeat ="response in responses">
+            <a class = "thumbnail" ng-click="addImage(response.images.thumbnail.url); $hide()">
+              <img ng-src ="{{response.images.thumbnail.url}}" alt = "Generic" >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
