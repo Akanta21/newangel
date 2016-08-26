@@ -10,6 +10,10 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
+            <label for="item-name" class="form-control-label">Instagram account:</label>
+            <input type="text" class="form-control" id="item-name" ng-model="default.location">
+          </div>
+          <div class="form-group">
             <label for="item-name" class="form-control-label">Item Name:</label>
             <input type="text" class="form-control" id="item-name" ng-model="default.name">
           </div>
@@ -32,7 +36,7 @@
           <a class = "thumbnail">
             <img ng-src ="{{selectedimage}}" alt = "Generic" >
           </a>
-          <button type="button" class="btn btn-lg btn-danger" data-template-url="components/aside/pictAside.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">Select Picture
+          <button type="button" class="btn btn-lg btn-danger" data-template-url="components/aside/pictAside.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body" ng-click="search()">Select Picture
             <br>
           </button>
           <hr/>

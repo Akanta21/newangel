@@ -10,7 +10,7 @@
       <div class="modal-body">
         <div class = "row">
           <div class = "col-sm-6 col-md-3" ng-repeat ="response in responses">
-            <a class = "thumbnail" ng-click="addImage(response.images.thumbnail.url); $hide()">
+            <a class = "thumbnail" ng-click="addImage(response.images.low_resolution.url); $hide()">
               <img ng-src ="{{response.images.thumbnail.url}}" alt = "Generic" >
             </a>
           </div>

@@ -16,16 +16,18 @@ angular.module('angelApp')
     .catch(function (err) {
       console.log('failed to get products ' + err)
     })
-
-    // getting instagram images
-    $http.get('https://aoimpact.herokuapp.com/api')
-    .then(function (response) {
-      console.log(response.data)
-      $scope.responses = response.data
-    })
-    .catch(function (err) {
-      console.log('failed to get instagram images' + err)
-    })
+    $scope.search = function () {
+      // getting instagram images
+      console.log($scope.default.location)
+      $http.get('https://aoimpact.herokuapp.com/api?location=' + $scope.default.location)
+      .then(function (response) {
+        console.log(response.data)
+        $scope.responses = response.data
+      })
+      .catch(function (err) {
+        console.log('failed to get instagram images' + err)
+      })
+    }
 
     // adding an image
     $scope.addImage = function (imgUrl) {
