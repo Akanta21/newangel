@@ -2,7 +2,10 @@ angular.module('angelApp')
 .component('cart', {
   templateUrl: 'components/cart/cart.html',
   controller: function ($scope, $location, $window) {
-    $scope.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    $scope.numbers = []
+    for(var i = 0; i < 21; i++){
+      $scope.numbers[i] = i
+    }
     $scope.quantity = 1
     var storedData = localStorage.getItem("orderCart");
     console.log(storedData)
@@ -15,6 +18,20 @@ angular.module('angelApp')
       return $scope.products.reduce(function(total,product){
         return total + (product.currentQuantity * product.price || 0);//for case when this filed not filled
       },0);
+    }
+    $scope.removeItem = function(id) {
+      function findById(){
+        for(var i=0; i<$scope.products.length; i++){
+          if($scope.products[i].id === id){
+              console.log(i)
+              return i
+          }
+        }
+      }
+      console.log($scope.products)
+      $scope.products.splice(findById(),1)
+      console.log($scope.products)
+      localStorage.setItem('orderCart',JSON.stringify($scope.products));
     }
     $scope.getGST = function() {
       return ($scope.getSubTotal() * 0.07)

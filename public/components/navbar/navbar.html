@@ -23,15 +23,15 @@
           <a href="#/products" class="nav-font">Products Catalog</a>
         </li>
         <li class="dropdown">
-          <a class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-hide="isLoggedIn">Sign In / Sign Up <span class="caret"></span></a>
-          <ul class="dropdown-menu" ng-hide="isLoggedIn">
-            <li ng-hide="isLoggedIn"><a href="#/login">Sign In</a></li>
+          <a class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-hide="isLoggedIn()">Sign In / Sign Up <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/login">Sign In</a></li>
             <li><a href="#/signup">Sign Up</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Contact Us</a></li>
           </ul>
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLoggedIn">Welcome back, {{user}} <span class="caret"></span></a>
-          <ul class="dropdown-menu" ng-show="isLoggedIn">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-show="isLoggedIn()">Welcome back, {{user}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" ng-show="isLoggedIn()">
             <li><a href="#/profile">Profile</a></li>
             <li><a ng-click="logout()">Sign Out</a></li>
             <li role="separator" class="divider"></li>

@@ -11,14 +11,14 @@
             <input type="text"
                    class="form-control title-input"
                    placeholder="{{product.title}}"
-                   ng-model="editProduct.title" />
+                   ng-model="product.title" />
         </div>
         <div class="form-group">
-          <label for="title">Title</label>
-            <input type="text"
+          <label for="title">Price ($)</label>
+            <input type="number"
                    class="form-control title-input"
                    placeholder="{{product.price}}"
-                   ng-model="editProduct.price" />
+                   ng-model="product.price" />
         </div>
         <div class="form-group">
           <label for="description"
@@ -26,7 +26,7 @@
             <textarea type="text"
                       class="form-control description-textarea"
                       placeholder="{{product.description}}"
-                      ng-model="editProduct.description"
+                      ng-model="product.description"
                       rows="5" />
             </textarea>
         </div>
@@ -39,7 +39,7 @@
         </button>
         <button type="button"
                 class="btn btn-primary pull-left"
-                ng-click="savePost()">Save changes
+                ng-click="savePost(product._id)">Save changes
         </button>
       </div>
     </div>

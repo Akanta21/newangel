@@ -6,32 +6,38 @@
   </div>
 
   <button class="btn btn-default" data-animation="am-fade-and-scale" data-placement="center" data-template-url="components/modals/addPostModal.html"
-  bs-modal="showModal">Add a new product</button>
+  bs-modal="showModal" ng-show="isAdmin()">Add a new product</button>
   <hr/>
 
   <div ng-repeat = "product in products">
-    <div class="col-xs-6 col-md-4">
-      <figure class="figure">
+    <div class="col-xs-6 col-md-4 product-div">
+      <figure class="figure col-md-12">
         <img ng-src="{{product.picture}}" class="figure-img img-responsive img-rounded" alt="A generic square placeholder image with rounded corners in a figure." style="max-height: 300px">
-        <figcaption class="figure-caption">{{product.title| limitTo:50}} {{product.description .length > 50 ? '...' : ''}}</figcaption>
+        <figcaption class="figure-caption">{{product.title| limitTo:30}} {{product.description .length > 30 ? '...' : ''}}</figcaption>
       </figure>
-      <a class="like-post" ng-click="interest(product._id, product.stock+1)">
-        <i class="fa fa-thumbs-up fa-lg" data-title="Popularity" aria-hidden="true"></i>
-      </a>
-      <span class="likeCount">{{ product.stock }}</span>
-      <a href="#/products" class="edit-post pull-right" ng-hide="isAdmin" ng-click="addToCart(product._id, product.title, product.price)">
-        <i class="productPrice text-center">{{product.price | currency}}</i>
-        <span>||</span>
-        <i class="fa fa-cart-plus fa-lg icon-edit" aria-hidden="true" data-title="Add to Cart" bs-tooltip></i>
-      </a>
-      <a class="edit-post" ng-show="isAdmin" data-animation="am-fade-and-scale" data-template-url="components/modals/editPostModal.html" bs-modal="showModal">
-        <i class="fa fa-pencil-square-o fa-lg pull-right icon-edit" aria-hidden="true"
-        data-title="Edit product" bs-tooltip></i>
-      </a>
-      <a href="#/products" class="edit-post pull-right" ng-click="delete(product._id)">
-        <i class="fa fa-ban fa-lg pull-right icon-edit" aria-hidden="true"
-        data-title="Permanently remove product" bs-tooltip></i>
-      </a>
+      <div class="col-md-12">
+        <a class="like-post" ng-click="interest(product._id, product.stock+1)">
+          <i class="fa fa-thumbs-up fa-md" data-title="Popularity" aria-hidden="true"></i>
+        </a>
+        <span class="likeCount">{{ product.stock }}</span>
+        <i class="productPrice pull-right">{{product.price | currency}}</i>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-default" data-animation="am-fade-and-scale" data-template-url="components/modals/productDetailsModal.html" bs-modal="showModal">Read More</button>
+      </div>
+      <div class="col-md-6">
+        <a href="#/products" class="edit-post pull-right" ng-hide="isAdmin()" ng-click="addToCart(product._id, product.title, product.price)">
+          <i class="fa fa-cart-plus fa-2x icon-edit" aria-hidden="true" data-title="Add to Cart" bs-tooltip></i>
+        </a>
+        <a class="edit-post" ng-show="isAdmin()" data-animation="am-fade-and-scale" data-template-url="components/modals/editPostModal.html" bs-modal="showModal">
+          <i class="fa fa-pencil-square-o fa-lg pull-right icon-edit" aria-hidden="true"
+          data-title="Edit product" bs-tooltip></i>
+        </a>
+        <a href="#/products" class="edit-post pull-right" ng-click="delete(product._id)" ng-show="isAdmin()">
+          <i class="fa fa-ban fa-lg pull-right icon-edit" aria-hidden="true"
+          data-title="Permanently remove product" bs-tooltip></i>
+        </a>
+      </div>
     </div>
   </div>
 </div>

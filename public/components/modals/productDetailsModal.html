@@ -1,0 +1,41 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <h2 class="modal-header">
+        {{product.title}}
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+      </h2>
+      <div class="modal-body">
+        <div>
+          <img ng-src="{{product.picture}}" alt="{{product.title}}" class="figure-img img-responsive">
+        </div>
+        <br>
+        <div>
+          <p>{{product.description}}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="footer-top">
+          <div class="col-md-6">
+            <div class="pull-left">
+              <a class="like-post" ng-click="interest(product._id, product.stock+1)">
+                <i class="fa fa-thumbs-up fa-2x" data-title="Popularity" aria-hidden="true"></i>
+              </a>
+              <span class="likeModal">{{ product.stock }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="pull-right">
+              <p class="priceModal">{{product.price | currency}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <button ng-click="addToCart(product._id, product.title, product.price); $hide()" class="btn buttonModal" aria-hidden="true" data-title="Add to Cart" bs-tooltip>
+            Add To Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

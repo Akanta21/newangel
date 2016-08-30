@@ -1,19 +1,32 @@
 angular.module('angelApp')
-  .controller('navbarCtrl', function ($scope, $location, $window) {
-    $scope.isLoggedIn = false
-    $scope.isAdmin = false
-    $scope.cartEmpty = true
-    $scope.user = $window.localStorage.name
-
-    $scope.logout = function () {
+  .service('auth', function($window, $location) {
+    this.login = function () {
+      if ($window.localStorage.auth_token) {
+        return true
+      } return false
+    }
+    this.admin = function () {
+      if ($window.localStorage.email === 'admin@gmail.com') {
+        return true
+      } return false
+    }
+    this.logout = function () {
       $window.localStorage.clear()
       $location.path('/')
       location.reload()
     }
-    if ($window.localStorage.auth_token) {
-      $scope.isLoggedIn = true
+  })
+  .controller('navbarCtrl', function ($scope, $location, $window, auth) {
+    $scope.isLoggedIn = function () {
+      return auth.login()
     }
-    if ($window.localStorage.email === 'admin@gmail.com') {
-      $scope.isAdmin = true
+    console.log($scope.isLoggedIn())
+    $scope.isAdmin = function () {
+      return auth.admin()
+    }
+    $scope.cartEmpty = true
+    $scope.user = $window.localStorage.name
+    $scope.logout = function () {
+      auth.logout()
     }
   })
