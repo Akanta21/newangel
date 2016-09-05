@@ -12,7 +12,7 @@
   <div ng-repeat = "product in products">
     <div class="col-xs-6 col-md-4 product-div">
       <figure class="figure col-md-12">
-        <img ng-src="{{product.picture}}" class="figure-img img-responsive img-rounded" alt="A generic square placeholder image with rounded corners in a figure." style="max-height: 300px">
+        <img ng-src="{{product.picture}}" class="img-responsive" alt="A generic square placeholder image with rounded corners in a figure.">
         <figcaption class="figure-caption">{{product.title| limitTo:30}} {{product.description .length > 30 ? '...' : ''}}</figcaption>
       </figure>
       <div class="col-md-12">

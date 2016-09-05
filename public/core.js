@@ -1,6 +1,7 @@
 /* globals angular */
-angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'mgcrea.ngStrap'])
+angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'mgcrea.ngStrap', 'angularPayments'])
 .config(function ($routeProvider, $locationProvider) {
+  window.Stripe.setPublishableKey('pk_test_C9Xo9LthAymEaHpYEBuyssg6')
   $routeProvider
   .when('/', {
     template: '<home></home>'
@@ -19,6 +20,9 @@ angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', '
   })
   .when('/cart', {
     template: '<cart></cart>'
+  })
+  .when('/checkout', {
+    template: '<checkout></checkout>'
   })
   .otherwise({
     redirectTo: '/'

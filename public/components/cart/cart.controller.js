@@ -37,7 +37,9 @@ angular.module('angelApp')
       return ($scope.getSubTotal() * 0.07)
     }
     $scope.getTotal = function() {
-      return ($scope.getSubTotal() * 1.07)
+      var total = $scope.getSubTotal() * 1.07
+      window.localStorage.total = total
+      return total
     }
     $scope.checkout = function() {
       if(localStorage.getItem("auth_token")==null){
