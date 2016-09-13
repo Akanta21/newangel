@@ -1,15 +1,13 @@
 <div class="container" ng-cloak>
   <div class="user-posts-title">
-    <h2>Number of Products:
-      <span>{{ products.length }}</span>
-    </h2>
+    <h2>Product Search:<input type="text" ng-model="searchBox" /></h2>
   </div>
 
   <button class="btn btn-default" data-animation="am-fade-and-scale" data-placement="center" data-template-url="components/modals/addPostModal.html"
   bs-modal="showModal" ng-show="isAdmin()">Add a new product</button>
   <hr/>
 
-  <div ng-repeat = "product in products">
+  <div ng-repeat = "product in products | filter:searchBox">
     <div class="col-xs-6 col-md-4 product-div">
       <figure class="figure col-md-12">
         <img ng-src="{{product.picture}}" class="img-responsive" alt="A generic square placeholder image with rounded corners in a figure.">
