@@ -6,7 +6,7 @@ angular.module('angelApp')
     this.email = localStorage.getItem('email')
     $http({
       method: 'GET',
-      url:'http://localhost:3000/user',
+      url:'https://aoimpact.herokuapp.com/user',
       headers: {
       'Auth-Token': window.localStorage.auth_token
       }

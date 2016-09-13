@@ -60,7 +60,7 @@ angular.module('angelApp')
         localStorage.setItem('purchasedOrder',JSON.stringify($scope.products));
         $http({
           method: 'PATCH',
-          url: 'http://localhost:3000/addpurchase',
+          url: 'https://aoimpact.herokuapp.com/addpurchase',
           headers: {
             'Auth-Token': window.localStorage.auth_token
           },
