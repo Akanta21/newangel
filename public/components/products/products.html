@@ -22,21 +22,22 @@
         <span class="likeCount">{{ product.stock }}</span>
         <i class="productPrice pull-right">{{product.price | currency}}</i>
       </div>
-      <div class="col-md-6 col-xs-6">
+      <div class="col-md-12 col-xs-12">
         <button class="btn btn-default" data-animation="am-fade-and-scale" data-template-url="components/modals/productDetailsModal.html" bs-modal="showModal">Read More</button>
-      </div>
-      <div class="col-md-6 col-xs-6">
-        <a href="#/products" class="edit-post pull-right" ng-hide="isAdmin()" ng-click="addToCart(product._id, product.title, product.price)">
+        <a href="#/products" class="edit-post pull-right" ng-hide="isAdmin()" ng-click="addToCart(product.picture, product.title, product.price)">
           <i class="fa fa-cart-plus fa-2x icon-edit" aria-hidden="true" data-title="Add to Cart" bs-tooltip></i>
         </a>
         <a class="edit-post" ng-show="isAdmin()" data-animation="am-fade-and-scale" data-template-url="components/modals/editPostModal.html" bs-modal="showModal">
-          <i class="fa fa-pencil-square-o fa-lg pull-right icon-edit" aria-hidden="true"
+          <i class="fa fa-pencil-square-o fa-2x pull-right icon-edit" aria-hidden="true"
           data-title="Edit product" bs-tooltip></i>
         </a>
         <a href="#/products" class="edit-post pull-right" ng-click="delete(product._id)" ng-show="isAdmin()">
-          <i class="fa fa-ban fa-lg pull-right icon-edit" aria-hidden="true"
+          <i class="fa fa-ban fa-2x pull-right icon-edit" aria-hidden="true"
           data-title="Permanently remove product" bs-tooltip></i>
         </a>
+      </div>
+      <div class="col-md-6 col-xs-6">
+
       </div>
     </div>
   </div>

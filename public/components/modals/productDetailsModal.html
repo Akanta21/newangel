@@ -18,7 +18,7 @@
         <div class="footer-top">
           <div class="col-md-6">
             <div class="pull-left">
-              <a class="like-post" ng-click="interest(product._id, product.stock+1)">
+              <a class="like-post" ng-click="interest(product.picture, product.stock+1)">
                 <i class="fa fa-thumbs-up fa-2x" data-title="Popularity" aria-hidden="true"></i>
               </a>
               <span class="likeModal">{{ product.stock }}</span>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <button ng-click="addToCart(product._id, product.title, product.price); $hide()" class="btn buttonModal" aria-hidden="true" data-title="Add to Cart" bs-tooltip>
+          <button ng-click="addToCart(product.picture, product.title, product.price); $hide()" class="btn buttonModal" aria-hidden="true" data-title="Add to Cart" bs-tooltip>
             Add To Cart
           </button>
         </div>

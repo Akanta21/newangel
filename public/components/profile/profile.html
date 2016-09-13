@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row">
+      <div class="col-md-2"></div>
       <div class="col-md-8">
         <div class="profile">
           <h1 class="page-header">{{ $ctrl.name }}</h1>
@@ -7,15 +8,37 @@
             <div class="col-md-4">
               <img src="img/profile.jpg" class="img-thumbnail">
             </div>
-            <div class="col-md-5 profile">
+            <div class="col-md-8">
               <ul>
                 <li><strong>Name:</strong> {{ $ctrl.name }}</li>
                 <li><strong>Email: </strong>{{ $ctrl.email }}</li>
-                <!-- <li ng-repeat="purchase in purchases"><strong>Purchase history:</strong>
-                  <p>{{$ctrl.purchase}}</p>
-                </li> -->
               </ul>
-              <br><br>
+              <br />
+              <p>Past Purchases</p><hr>
+              <table class="table table-striped table-hover table-bordered">
+                <thead class="text-center">
+                  <tr>
+                    <th class="col-md-3">Product</th>
+                    <th class="col-md-3">Quantity</th>
+            				<th class="col-md-2 text-center">Price</th>
+                    <th class="col-md-3">
+                      Date of Purchase
+                    </th>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="purchase in purchases">
+                  <tr>
+                    <td class="col-md-3">{{purchase[0].item}}</td>
+                    <td class="col-md-3">{{::purchase[0].currentQuantity}}</td>
+                    <td class="col-md-3">{{::purchase[0].price*purchase[0].currentQuantity  | currency}}</td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-3">{{purchase[1].item}}</td>
+                    <td class="col-md-3">{{::purchase[1].currentQuantity}}</td>
+                    <td class="col-md-3">{{::purchase[1].price*purchase[1].currentQuantity  | currency}}</td>
+                  </tr>
+                </tbody>
+            </div>
           </div>
         </div>
       </div>

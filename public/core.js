@@ -1,7 +1,6 @@
 /* globals angular */
-angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'mgcrea.ngStrap', 'angularPayments'])
+angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'mgcrea.ngStrap'])
 .config(function ($routeProvider, $locationProvider) {
-  window.Stripe.setPublishableKey('pk_test_C9Xo9LthAymEaHpYEBuyssg6')
   $routeProvider
   .when('/', {
     template: '<home></home>'

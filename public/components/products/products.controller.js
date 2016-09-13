@@ -95,13 +95,13 @@ angular.module('angelApp')
     }
 
     // adding to cart
-    $scope.addToCart = function (productId, title, price) {
+    $scope.addToCart = function (picture, title, price) {
       if (localStorage.getItem('orderCart')) {
         storedArray = localStorage.getItem('orderCart')
         data = JSON.parse(storedArray)
-        data.push({id: productId, item: title, price: price})
+        data.push({picture: picture, item: title, price: price})
       } else {
-        $scope.cart.push({id: productId, item: title, price: price})
+        $scope.cart.push({picture: picture, item: title, price: price})
         console.log($scope.cart)
         // localStorage.setItem("orderCart",  JSON.stringify($scope.cart));
       }

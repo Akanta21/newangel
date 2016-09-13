@@ -19,7 +19,7 @@ angular.module('angelApp')
         window.localStorage.name = data.user.name
         window.localStorage.email = data.user.email
         window.localStorage.auth_token = data.user.auth_token
-        $location.path('/')
+        $location.path('/products')
         location.reload()
       })
       .error((response) => {

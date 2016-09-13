@@ -38,5 +38,20 @@ a:hover{
   background:rgb(240, 153, 23)
 }
 .ng-invalid {
-    color: red;
+  color: red;
+}
+.dropdown-qty{
+  background:lightgrey
+}
+.badge {
+    background-color: grey;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
 }
