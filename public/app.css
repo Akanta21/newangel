@@ -1,12 +1,13 @@
 body{
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .padded-nav{
+  font: bold 16px 'Lato';
   padding:10px;
   background-color: #89D69E;
 }
 .nav-font{
-  color:#BA7779!important
+  color:black!important
 }
 a:hover{
   color:#275935!important

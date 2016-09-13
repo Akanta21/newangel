@@ -6,6 +6,7 @@ angular.module('angelApp')
     $scope.myInterval = 2500;
     $scope.noWrapSlides = false;
     $scope.active = 0;
+    $scope.texts=["With our help, women entrepreneurs can change their world", "Invest in impactful enterprises", "Adopt a new funding model", "Invest in ethically and sustainably produced goods and services", "Seeks to create a better world for all and generations to come"]
     var slides = $scope.slides = [];
     console.log($scope.slides)
     var currIndex = 0;

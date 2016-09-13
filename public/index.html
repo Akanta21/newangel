@@ -9,12 +9,14 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Denk+One|Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Roboto|Lato:900" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="footer.css">
 </head>
 <body ng-app="angelApp" ng-cloak>
   <div ng-include="'components/navbar/navbar.html'"></div>
   <ng-view></ng-view>
+  <div ng-include="'components/footer.html'"></div>
   <!-- Angular cdn -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
@@ -33,17 +35,17 @@
   <script src="https://checkout.stripe.com/checkout.js"></script>
   <script type="text/javascript" src="bower_components/angular-payments/lib/angular-payments.js"> -->
 </script>
-  <!-- font-awesome js -->
-  <script src="https://use.fontawesome.com/015daf146d.js"></script>
-  <!-- component files -->
-  <script src="core.js" charset="utf-8"></script>
-  <script src="components/navbar/navbar.controller.js"></script>
-  <script src="components/signup/signup.controller.js"></script>
-  <script src="components/login/login.controller.js"></script>
-  <script src="components/home/home.controller.js"></script>
-  <script src="components/profile/profile.controller.js"></script>
-  <script src="components/products/products.controller.js"></script>
-  <script src="components/cart/cart.controller.js"></script>
-  <script src="components/checkout/checkout.controller.js"></script>
+<!-- font-awesome js -->
+<script src="https://use.fontawesome.com/015daf146d.js"></script>
+<!-- component files -->
+<script src="core.js" charset="utf-8"></script>
+<script src="components/navbar/navbar.controller.js"></script>
+<script src="components/signup/signup.controller.js"></script>
+<script src="components/login/login.controller.js"></script>
+<script src="components/home/home.controller.js"></script>
+<script src="components/profile/profile.controller.js"></script>
+<script src="components/products/products.controller.js"></script>
+<script src="components/cart/cart.controller.js"></script>
+<script src="components/checkout/checkout.controller.js"></script>
 </body>
 </html>
