@@ -22,7 +22,7 @@ angular.module('angelApp')
         $location.path('/products')
         location.reload()
       })
-      .error((response) => {
+      .error(function(response) {
         console.log(response.err)
         this.message = response.err
       })
