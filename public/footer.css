@@ -6,8 +6,10 @@
 	text-align: left;
 	font:'Open Sans', sans-serif;
 	padding: 55px 50px;
-	position:absolute;
-
+	height:300px;
+	position:relative;
+	bottom:0;
+	left:0;
 }
 
 .footer-distributed .footer-left,

@@ -14,9 +14,12 @@
   <link rel="stylesheet" href="footer.css">
 </head>
 <body ng-app="angelApp" ng-cloak>
-  <div ng-include="'components/navbar/navbar.html'"></div>
-  <ng-view></ng-view>
-  <div ng-include="'components/footer.html'"></div>
+  <div id="wrapper">
+    <div ng-include="'components/navbar/navbar.html'"></div>
+    <ng-view></ng-view>
+    <div id="content"></div>
+    <div ng-include="'components/footer.html'"></div>
+  </div>
   <!-- Angular cdn -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>

@@ -1,6 +1,16 @@
 body{
   font-family: 'Roboto', sans-serif;
   font-weight:bolder;
+  margin:0;
+  padding:0;
+  height:100%;
+}
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+#content {
+	padding-bottom:250px; /* Height of the footer element */
 }
 .padded-nav{
   font: bold 16px 'Lato';
@@ -30,7 +40,7 @@ a:hover{
   }
 }
 .product-div{
-  border:1px solid rgb(237, 236, 236)
+  border:1px solid rgb(237, 236, 236);
 }
 .likeModal, .priceModal{
   font-size:18px
@@ -56,4 +66,7 @@ a:hover{
     text-align: center;
     vertical-align: middle;
     white-space: nowrap;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }
