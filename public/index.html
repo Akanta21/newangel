@@ -12,13 +12,14 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Roboto|Lato:900" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="aboutus.css">
 </head>
 <body ng-app="angelApp" ng-cloak>
   <div id="wrapper">
     <div ng-include="'components/navbar/navbar.html'"></div>
     <ng-view></ng-view>
     <div id="content"></div>
-    <div ng-include="'components/footer.html'"></div>
+    <div ng-include="'components/static/footer.html'"></div>
   </div>
   <!-- Angular cdn -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
@@ -50,5 +51,6 @@
 <script src="components/products/products.controller.js"></script>
 <script src="components/cart/cart.controller.js"></script>
 <script src="components/checkout/checkout.controller.js"></script>
+<script src="components/aboutus/aboutus.controller.js"></script>
 </body>
 </html>

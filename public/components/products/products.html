@@ -11,8 +11,10 @@
     <div class="col-xs-6 col-md-4 product-div">
       <figure class="figure col-md-12">
         <img ng-src="{{product.picture}}" class="img-responsive" alt="A generic square placeholder image with rounded corners in a figure.">
-        <figcaption class="figure-caption">{{product.title| limitTo:30}} {{product.description .length > 30 ? '...' : ''}}</figcaption>
       </figure>
+      
+      <figcaption class="figure-caption col-md-12">{{product.title| limitTo:20}} {{product.description .length > 20 ? '...' : ''}}</figcaption>
+
       <div class="col-md-12">
         <a class="like-post" ng-click="interest(product._id, product.stock+1)">
           <i class="fa fa-thumbs-up fa-md" data-title="Popularity" aria-hidden="true"></i>
@@ -20,6 +22,7 @@
         <span class="likeCount">{{ product.stock }}</span>
         <i class="productPrice pull-right">{{product.price | currency}}</i>
       </div>
+
       <div class="col-md-12 col-xs-12">
         <button class="btn btn-success" data-animation="am-fade-and-scale" data-template-url="components/modals/productDetailsModal.html" bs-modal="showModal">Read More</button>
         <a href="#/products" class="edit-post pull-right" ng-hide="isAdmin()" ng-click="addToCart(product.picture, product.title, product.price)">
@@ -35,8 +38,8 @@
         </a>
       </div>
       <div class="col-md-6 col-xs-6">
-
       </div>
+
     </div>
   </div>
 </div>

@@ -5,6 +5,9 @@ angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', '
   .when('/', {
     template: '<home></home>'
   })
+  .when('/aboutus', {
+    template: '<aboutus></aboutus>'
+  })
   .when('/signup', {
     template: '<sign-up></sign-up>'
   })
