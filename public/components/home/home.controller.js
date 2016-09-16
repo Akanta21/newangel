@@ -12,7 +12,7 @@ angular.module('angelApp')
     var currIndex = 0;
 
     $scope.addSlide = function() {
-      var newWidth = 800 + slides.length + 1;
+      var newWidth = 1100 + slides.length + 1;
       slides.push({
         image: '//unsplash.it/' + newWidth + '/500',
         id: currIndex++

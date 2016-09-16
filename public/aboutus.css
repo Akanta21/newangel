@@ -1,0 +1,194 @@
+.header-image {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background:
+       linear-gradient(
+         rgba(0, 0, 0, 0.6),
+         rgba(0, 0, 0, 0.6)
+       ),
+       url(https://static.pexels.com/photos/39347/tea-farmhouse-hand-fresh-39347.jpeg);;
+    width:100%;
+    opacity: 0.9;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.headline {
+    padding: 120px 0;
+    color:white
+}
+
+.headline h1 {
+    font-size: 130px;
+    background: rgba(200,200,255,0);
+}
+
+.headline h3 {
+    font-size: 40px;
+    background: rgba(200,255,255,0);
+}
+
+.featurette-divider {
+    margin: 80px 0;
+}
+
+.featurette {
+    overflow: hidden;
+}
+
+.featurette-image.pull-left {
+    margin-right: 40px;
+}
+.featurette-image{
+  max-height:500px;
+  max-width:500px
+}
+
+.featurette-image.pull-right {
+    margin-left: 40px;
+}
+
+.featurette-heading {
+    font-size: 50px;
+}
+.featurette ul{
+  font-size: 27.5px
+}
+@media(max-width:1200px) {
+    .headline h1 {
+        font-size: 140px;
+    }
+
+    .headline h3 {
+        font-size: 33px;
+    }
+
+    .featurette-divider {
+        margin: 50px 0;
+    }
+
+    .featurette-image.pull-left {
+        margin-right: 20px;
+    }
+
+    .featurette-image.pull-right {
+        margin-left: 20px;
+    }
+
+    .featurette-heading {
+        font-size: 35px;
+    }
+    .featurette ul{
+      font-size: 25px
+    }
+}
+
+@media(max-width:991px) {
+    .headline h1 {
+        font-size: 105px;
+    }
+
+    .headline h3 {
+        font-size: 25px;
+    }
+
+    .featurette-divider {
+        margin: 40px 0;
+    }
+
+    .featurette-image {
+        max-width: 50%;
+    }
+
+    .featurette-image.pull-left {
+        margin-right: 10px;
+    }
+
+    .featurette-image.pull-right {
+        margin-left: 10px;
+    }
+
+    .featurette-heading {
+        font-size: 30px;
+    }
+    .featurette ul{
+      font-size: 20px
+    }
+}
+
+@media(max-width:768px) {
+    .container {
+        margin: 0 15px;
+    }
+
+    .featurette-divider {
+        margin: 40px 0;
+    }
+
+    .featurette-heading {
+        font-size: 25px;
+    }
+    .featurette ul{
+      font-size: 15px
+    }
+}
+
+@media(max-width:668px) {
+    .headline h1 {
+        font-size: 70px;
+    }
+
+    .headline h3 {
+        font-size: 20px;
+    }
+
+    .featurette-divider {
+        margin: 30px 0;
+    }
+    .featurette ul{
+      font-size: 12.5px
+    }
+}
+
+@media(max-width:640px) {
+    .headline {
+        padding: 75px 0 25px 0;
+    }
+
+    .headline h1 {
+        font-size: 60px;
+    }
+
+    .headline h3 {
+        font-size: 15px;
+    }
+    .featurette ul{
+      font-size: 10px
+    }
+}
+
+@media(max-width:375px) {
+    .featurette-divider {
+        margin: 10px 0;
+    }
+
+    .featurette-image {
+        max-width: 100%;
+    }
+
+    .featurette-image.pull-left {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .featurette-image.pull-right {
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+    .featurette ul{
+      font-size: 10px
+    }
+}

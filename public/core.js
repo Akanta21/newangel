@@ -3,7 +3,13 @@ angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', '
 .config(function ($routeProvider, $locationProvider) {
   $routeProvider
   .when('/', {
+    template: '<products></products>'
+  })
+  .when('/home', {
     template: '<home></home>'
+  })
+  .when('/aboutus', {
+    template: '<aboutus></aboutus>'
   })
   .when('/signup', {
     template: '<sign-up></sign-up>'
