@@ -23,6 +23,10 @@ body{
 .nav-font{
   color:black!important
 }
+.carousel-font{
+  color:white;
+  font-size:45px
+}
 a:hover{
   color:#275935!important
 }

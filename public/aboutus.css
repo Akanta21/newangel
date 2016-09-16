@@ -2,7 +2,13 @@
     display: block;
     width: 100%;
     text-align: center;
-    background: url('https://static.pexels.com/photos/39347/tea-farmhouse-hand-fresh-39347.jpeg') no-repeat center center scroll;
+    background:
+       linear-gradient(
+         rgba(0, 0, 0, 0.6),
+         rgba(0, 0, 0, 0.6)
+       ),
+       url(https://static.pexels.com/photos/39347/tea-farmhouse-hand-fresh-39347.jpeg);;
+    width:100%;
     opacity: 0.9;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -12,7 +18,7 @@
 
 .headline {
     padding: 120px 0;
-    color:rgb(112, 115, 110)
+    color:white
 }
 
 .headline h1 {
@@ -20,9 +26,9 @@
     background: rgba(200,200,255,0);
 }
 
-.headline h2 {
-    font-size: 77px;
-    background: rgba(255,255,255,0);
+.headline h3 {
+    font-size: 40px;
+    background: rgba(200,255,255,0);
 }
 
 .featurette-divider {
@@ -36,6 +42,10 @@
 .featurette-image.pull-left {
     margin-right: 40px;
 }
+.featurette-image{
+  max-height:500px;
+  max-width:500px
+}
 
 .featurette-image.pull-right {
     margin-left: 40px;
@@ -44,13 +54,16 @@
 .featurette-heading {
     font-size: 50px;
 }
+.featurette ul{
+  font-size: 27.5px
+}
 @media(max-width:1200px) {
     .headline h1 {
         font-size: 140px;
     }
 
-    .headline h2 {
-        font-size: 63px;
+    .headline h3 {
+        font-size: 33px;
     }
 
     .featurette-divider {
@@ -68,6 +81,9 @@
     .featurette-heading {
         font-size: 35px;
     }
+    .featurette ul{
+      font-size: 25px
+    }
 }
 
 @media(max-width:991px) {
@@ -75,8 +91,8 @@
         font-size: 105px;
     }
 
-    .headline h2 {
-        font-size: 50px;
+    .headline h3 {
+        font-size: 25px;
     }
 
     .featurette-divider {
@@ -98,6 +114,9 @@
     .featurette-heading {
         font-size: 30px;
     }
+    .featurette ul{
+      font-size: 20px
+    }
 }
 
 @media(max-width:768px) {
@@ -112,6 +131,9 @@
     .featurette-heading {
         font-size: 25px;
     }
+    .featurette ul{
+      font-size: 15px
+    }
 }
 
 @media(max-width:668px) {
@@ -119,12 +141,15 @@
         font-size: 70px;
     }
 
-    .headline h2 {
-        font-size: 32px;
+    .headline h3 {
+        font-size: 20px;
     }
 
     .featurette-divider {
         margin: 30px 0;
+    }
+    .featurette ul{
+      font-size: 12.5px
     }
 }
 
@@ -137,8 +162,11 @@
         font-size: 60px;
     }
 
-    .headline h2 {
-        font-size: 30px;
+    .headline h3 {
+        font-size: 15px;
+    }
+    .featurette ul{
+      font-size: 10px
     }
 }
 
@@ -159,5 +187,8 @@
     .featurette-image.pull-right {
         margin-bottom: 10px;
         margin-left: 0;
+    }
+    .featurette ul{
+      font-size: 10px
     }
 }
