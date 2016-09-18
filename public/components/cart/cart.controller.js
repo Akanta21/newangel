@@ -69,9 +69,7 @@ angular.module('angelApp')
           }
         })
         .success(function () {
-          localStorage.removeItem('purchasedOrder')
-          localStorage.removeItem('orderCart')
-          location.reload()
+          $location.path( "/checkout" )
           console.log('updated the user history')
         })
         .error(function () {
