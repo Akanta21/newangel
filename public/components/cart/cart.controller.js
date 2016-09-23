@@ -57,24 +57,27 @@ angular.module('angelApp')
       if(localStorage.getItem("auth_token")==null){
         $location.path( "/login" );
       } else {
-        localStorage.setItem('purchasedOrder',JSON.stringify($scope.products));
-        $http({
-          method: 'PATCH',
-          url: 'https://aoimpact.herokuapp.com/addpurchase',
-          headers: {
-            'Auth-Token': window.localStorage.auth_token
-          },
-          data: {
-            purchase_history: $scope.products
-          }
-        })
-        .success(function () {
-          $location.path( "/checkout" )
-          console.log('updated the user history')
-        })
-        .error(function () {
-          console.log('error')
-        })
+        $location.path("/checkout")
+        // localStorage.setItem('purchasedOrder',JSON.stringify($scope.products));
+        // $http({
+        //   method: 'PUT',
+        //   url: 'http://localhost:3000/addpurchase',
+        //   headers: {
+        //     'Auth-Token': window.localStorage.auth_token
+        //   },
+        //   data: {
+        //     purchase_history: $scope.products
+        //   }
+        // })
+        // .success(function () {
+        //   localStorage.removeItem('purchasedOrder')
+        //   localStorage.removeItem('orderCart')
+        //   location.reload()
+        //   console.log('updated the user history')
+        // })
+        // .error(function () {
+        //   console.log('error')
+        // })
       }
     }
   }
