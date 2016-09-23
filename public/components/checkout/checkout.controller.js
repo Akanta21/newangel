@@ -37,7 +37,7 @@ angular.module('angelApp')
         // Submit the form:
         $http({
           method: 'POST',
-          url: 'http://localhost:3000/payment',
+          url: 'https://aoimpact.herokuapp.com/payment',
           // headers: {
           //   'total': window.localStorage.total,
           //   'customer_email': window.localStorage.email
