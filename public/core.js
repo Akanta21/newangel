@@ -29,6 +29,9 @@ angular.module('angelApp', ['ngRoute', 'ngAnimate', 'ngTouch', 'ui.bootstrap', '
   .when('/checkout', {
     template: '<checkout></checkout>'
   })
+  .when('/delivery', {
+    template: '<delivery></delivery>'
+  })
   .otherwise({
     redirectTo: '/'
   })

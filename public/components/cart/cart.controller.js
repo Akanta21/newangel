@@ -16,11 +16,8 @@ angular.module('angelApp')
         return 0
       }
       return $scope.products.reduce(function(total,product){
-        if(product.currentQuantity >= 900){
-          $scope.discount = 20
-          return total + (product.currentQuantity * product.price)
-        } else if (product.currentQuantity >= 500) {
-          $scope.discount = 10
+        if(product.discountCode == 'ai@fb'){
+          $scope.discount = 1
           return total + (product.currentQuantity * product.price)
         } else {
           return total + (product.currentQuantity * product.price || 0);//for case when this filed not filled
@@ -45,7 +42,7 @@ angular.module('angelApp')
       return (($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 0.07)
     }
     $scope.getDiscount = function() {
-      localStorage.setItem('discount', $scope.getSubTotal() * 0.01 * $scope.discount )
+      localStorage.setItem('discount', $scope.getSubTotal()- $scope.discount )
       return ($scope.getSubTotal() * 0.01 * $scope.discount)
     }
     $scope.getTotal = function() {
@@ -78,6 +75,13 @@ angular.module('angelApp')
         // .error(function () {
         //   console.log('error')
         // })
+      }
+    }
+    $scope.delivery = function() {
+      if(localStorage.getItem("auth_token")==null){
+        $location.path( "/login" );
+      } else {
+        $location.path("/delivery")
       }
     }
   }
