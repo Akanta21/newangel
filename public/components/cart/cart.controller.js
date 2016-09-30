@@ -2,7 +2,7 @@ angular.module('angelApp')
 .component('cart', {
   templateUrl: 'components/cart/cart.html',
   controller: function ($scope, $location, $window, $http) {
-    var storedArray, data
+    var storedArray
     var storedData = localStorage.getItem('orderCart')
     $scope.numbers = []
     $scope.checkoutCart = []
@@ -60,7 +60,9 @@ angular.module('angelApp')
       localStorage.setItem('discount', $scope.discount )
       return $scope.discount
     }
-
+    $scope.reset = function() {
+      localStorage.removeItem('checkout')
+    }
     $scope.getTotal = function() {
       var total = ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 1.07
       window.localStorage.total = total
@@ -68,8 +70,10 @@ angular.module('angelApp')
     }
     // add to checkout
     $scope.saveOrder = function (title, price) {
+      storedArray = localStorage.getItem('checkout')
+      let data = JSON.parse(storedArray)
       // function to check if object is in array
-        function containsObject(obj, list) {
+      function containsObject(obj, list) {
         var i;
         for (i in list) {
           if (list[i].item === obj) {
@@ -87,32 +91,33 @@ angular.module('angelApp')
       }
       this.$watch("product.currentQuantity", function(newValue){
         if(localStorage.getItem('checkout') && newValue){
-          storedArray = localStorage.getItem('checkout')
-          data = JSON.parse(storedArray)
           console.log(data.length)
           if(containsObject(title, data)){
+            console.log("replace")
             replaceQuantity(newValue, title, data)
           } else {
+            console.log('data', data)
             console.log('push')
             data.push({item:title, price:price, quantity: newValue})
           }
           localStorage.setItem('checkout', JSON.stringify(data))
-        } else {
-          $scope.checkoutCart.push({item:title, price: price, quantity: newValue})
-          localStorage.setItem('checkout', JSON.stringify($scope.checkoutCart))
+        } else if(newValue) {
+          console.log(newValue)
+          if(!containsObject(title, data)){
+            $scope.checkoutCart.push({item:title, price: price, quantity: newValue})
+            localStorage.setItem('checkout', JSON.stringify($scope.checkoutCart))
+          }
+          else{
+
+          }
         }
       })
-    }
-    // reset
-    $scope.reset = function() {
-      localStorage.removeItem('checkout')
     }
     $scope.checkout = function() {
       if(localStorage.getItem("auth_token")==null){
         $location.path( "/login" );
       } else {
         $location.path("/checkout")
-
       }
     }
     $scope.delivery = function() {
@@ -123,19 +128,19 @@ angular.module('angelApp')
           method: 'POST',
           url: 'http://localhost:3000/neworder',
           data: {
-            customer_email: localStorage.getItem('')
+            customer_email: localStorage.getItem('email'),
+            orders: localStorage.getItem('checkout'),
+            price: localStorage.getItem('total')
           }
         })
         .success(function () {
-          localStorage.removeItem('purchasedOrder')
+          localStorage.removeItem('checkout')
           localStorage.removeItem('orderCart')
-          location.reload()
-          console.log('updated the user history')
+          $location.path("/delivery")
         })
-        .error(function () {
-          console.log('error')
+        .error(function (data) {
+          console.log(data.error)
         })
-        $location.path("/delivery")
       }
     }
   }
