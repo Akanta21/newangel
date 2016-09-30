@@ -60,9 +60,6 @@ angular.module('angelApp')
       localStorage.setItem('discount', $scope.discount )
       return $scope.discount
     }
-    $scope.reset = function() {
-      localStorage.removeItem('checkout')
-    }
     $scope.getTotal = function() {
       var total = ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 1.07
       window.localStorage.total = total
@@ -108,7 +105,6 @@ angular.module('angelApp')
             localStorage.setItem('checkout', JSON.stringify($scope.checkoutCart))
           }
           else{
-
           }
         }
       })
