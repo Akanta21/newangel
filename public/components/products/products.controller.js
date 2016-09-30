@@ -7,7 +7,6 @@ angular.module('angelApp')
     $scope.isLoggedIn = function () {
       return auth.login()
     }
-    console.log($scope.isLoggedIn())
     $scope.isAdmin = function () {
       return auth.admin()
     }
@@ -17,11 +16,9 @@ angular.module('angelApp')
     // get products from database
     $http.get('https://aoimpact.herokuapp.com/products')
     .then(function (response) {
-      console.log(response.data)
       $scope.products = response.data
     })
     .catch(function (err) {
-      console.log('failed to get products ' + err)
     })
 
     // getting pictures from different instagram accounts
@@ -30,11 +27,9 @@ angular.module('angelApp')
       console.log($scope.default.location)
       $http.get('https://aoimpact.herokuapp.com/api?location=' + $scope.default.location)
       .then(function (response) {
-        console.log(response.data)
         $scope.responses = response.data
       })
       .catch(function (err) {
-        console.log('failed to get instagram images' + err)
       })
     }
 
@@ -54,7 +49,6 @@ angular.module('angelApp')
         stock: $scope.default.stock,
         categories: $scope.default.categories
       }
-      console.log(data)
       $http({
         method: 'POST',
         url: 'https://aoimpact.herokuapp.com/newproduct/' ,
@@ -64,7 +58,6 @@ angular.module('angelApp')
         data: data
       })
       .success(function (data) {
-        console.log(data)
         localStorage.removeItem('url')
         $location.path('/products')
         location.reload()
@@ -72,7 +65,6 @@ angular.module('angelApp')
     }
     // editing existing product to the data base
     $scope.savePost = function (productId) {
-      console.log("halo")
       var data = {
         title: this.product.title,
         price: this.product.price,
@@ -88,7 +80,6 @@ angular.module('angelApp')
         data: data
       })
       .success(function (data) {
-        console.log(data)
         $location.path('/products')
         location.reload()
       })
@@ -96,13 +87,22 @@ angular.module('angelApp')
 
     // adding to cart
     $scope.addToCart = function (picture, title, price) {
+      function containsObject(obj, list) {
+        var i;
+        for (i in list) {
+          if (list[i].item === obj) {
+            return true;
+          }
+        }
+        return false;
+      }
       if (localStorage.getItem('orderCart')) {
         storedArray = localStorage.getItem('orderCart')
         data = JSON.parse(storedArray)
-        data.push({picture: picture, item: title, price: price})
+        if(!containsObject(title, data)) data.push({picture: picture, item: title, price: price})
+
       } else {
         $scope.cart.push({picture: picture, item: title, price: price})
-        console.log($scope.cart)
         // localStorage.setItem("orderCart",  JSON.stringify($scope.cart));
       }
       localStorage.setItem('orderCart', JSON.stringify(data || $scope.cart))

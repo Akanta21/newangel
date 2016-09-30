@@ -17,13 +17,13 @@
 				<td class="col-md-2 text-center">
 					<form name="myForm">
 						<label for="mySelect"></label>
-						<select class="dropdown-qty" ng-model="product.currentQuantity" ng-options="number for number in numbers">
+						<select class="dropdown-qty" ng-model="product.currentQuantity" ng-options="number for number in numbers" ng-click="saveOrder(product.item, product.price)">
 						</select>
 					</form>
 				</td>
 				<td class="col-md-2 text-right">{{product.price * product.currentQuantity | currency}}</td>
 				<td class="col-md-1 text-center">
-					<a ng-click="removeItem(product.id)" class="btn btn-danger">[X]</a>
+					<a ng-click="removeItem(product.id, product.item)" class="btn btn-danger">[X]</a>
 				</td>
 			</tr>
 
@@ -31,8 +31,12 @@
 				<th colspan="3"><span class="pull-right">Sub Total</span></th>
 				<td colspan="2"><span class="pull-right">{{getSubTotal() | currency}}</span></td>
 			</tr>
+			<tr>
+				<th colspan="3"><span class="pull-right">Discount Code: </span></th>
+				<th colspan="2"><input type="code" name="code" placeholder="Discount code" class="form-control" ng-model="discountCode"></th>
+			</tr>
 			<tr ng-show="discount">
-				<th colspan="3"><span class="pull-right">Discount: {{discount}}%</span></th>
+				<th colspan="3"><span class="pull-right">Discount: </span></th>
 				<th colspan="2"><span class="pull-right">{{getDiscount() | currency}}</span></th>
 			</tr>
 			<tr>
@@ -44,23 +48,10 @@
 				<th colspan="2"><span class="pull-right">{{getTotal() | currency}}</span></th>
 			</tr>
 			<tr>
-				<!-- <form action="/charge" method="POST">
-					<script
-					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-					data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-					data-amount="2000"
-					data-name="Stripe.com"
-					data-description="2 widgets"
-					data-image="/img/documentation/checkout/marketplace.png"
-					data-locale="auto"
-					data-zip-code=&quot;true&quot;>
-					</script>
-				</form> -->
-				<!-- <form action="/charge" method="POST"></form> -->
-				<!-- <td colspan="3"><a href="#/checkout" class="btn btn-success">Payment</a></td> -->
 				<td colspan="6">
 					<!-- <a href="#/products" class="pull-right btn btn-primary">Continue Shopping</a> -->
 					<a ng-click="delivery()" class="pull-right btn btn-success">Next</a>
+					<a ng-click="reset()" class="pull-right btn btn-danger">Reset</a>
 					<!-- <a ng-click="checkout()" class="pull-right btn btn-success">Checkout</a> -->
 				</td>
 			</tr>
