@@ -2,6 +2,7 @@ var express = require('express')
 var https = require('https')
 var fs = require('fs')
 var path = require('path')
+const PORT = process.env.PORT || 4000
 
 var app = express()
 
@@ -24,4 +25,4 @@ app.use(express.static('public'))
 //   console.log('Express server is up on port', PORT)
 // })
 
-https.createServer(options, app).listen(8000)
+https.createServer(options, app).listen(PORT)
