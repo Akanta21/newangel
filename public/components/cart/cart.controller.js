@@ -4,6 +4,7 @@ angular.module('angelApp')
   controller: function ($scope, $location, $window, $http) {
     var storedArray
     var storedData = localStorage.getItem('orderCart')
+    var storedCart = localStorage.getItem('checkout')
     $scope.numbers = []
     $scope.checkoutCart = []
     $scope.discountCode
@@ -13,17 +14,40 @@ angular.module('angelApp')
     }
     $scope.quantity = 1
     $scope.products = JSON.parse(storedData)
+    $scope.subtotal = localStorage.getItem('subtotal')
+
+    $scope.currentQuantity = function(item){
+      var cartQuantity
+      var checkoutArray = JSON.parse(storedCart)
+      if(!checkoutArray){
+        cartQuantity = 0
+      } else {
+        checkoutArray.filter(function match(cart){
+          // console.log(cart.item)
+          // console.log(item)
+          if(cart.item === item){
+            cartQuantity = cart.quantity
+          }
+        })
+      }
+      // console.log(cartQuantity)
+      return cartQuantity
+    }
 
     $scope.getSubTotal = function() {
+      var subtotal
       if($scope.products === null){
         return 0
       }
       return $scope.products.reduce(function(total,product){
         if($scope.discountCode == 'ai@fb'){
           $scope.discount = 1
-          return total + (product.currentQuantity * product.price)
+          return total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price) - $scope.discount
         } else {
-          return total + (product.currentQuantity * product.price || 0);//for case when this filed not filled
+          subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
+          console.log(subtotal)
+          localStorage.setItem('Subtotal', subtotal)
+          return (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)|| 0);//for case when this filed not filled
         }
       },0);
     }
@@ -81,30 +105,28 @@ angular.module('angelApp')
       }
       // function to replace quantity when it is changed
       function replaceQuantity(qty, name, list) {
-        console.log("list", list)
+        // console.log("list", list)
         list.forEach(function(obj) {
           if (obj.item === name) obj.quantity = qty;
         });
       }
       this.$watch("product.currentQuantity", function(newValue){
         if(localStorage.getItem('checkout') && newValue){
-          console.log(data.length)
           if(containsObject(title, data)){
-            console.log("replace")
+            // console.log(title)
             replaceQuantity(newValue, title, data)
+            $scope.updatedQuantity = newValue
           } else {
-            console.log('data', data)
-            console.log('push')
             data.push({item:title, price:price, quantity: newValue})
           }
           localStorage.setItem('checkout', JSON.stringify(data))
         } else if(newValue) {
-          console.log(newValue)
           if(!containsObject(title, data)){
             $scope.checkoutCart.push({item:title, price: price, quantity: newValue})
             localStorage.setItem('checkout', JSON.stringify($scope.checkoutCart))
           }
           else{
+            console.log('Halo')
           }
         }
       })

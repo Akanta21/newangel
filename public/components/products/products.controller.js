@@ -72,7 +72,7 @@ angular.module('angelApp')
       }
       console.log(data)
       $http({
-        method: 'PATCH',
+        method: 'PUT',
         url: 'https://aoimpact.herokuapp.com/product/' + productId,
         headers: {
           'User-Email': window.localStorage.email
@@ -82,6 +82,9 @@ angular.module('angelApp')
       .success(function (data) {
         $location.path('/products')
         location.reload()
+      })
+      .error(function (data) {
+        console.log('unable to update')
       })
     }
 
