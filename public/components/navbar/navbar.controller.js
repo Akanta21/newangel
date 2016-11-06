@@ -20,7 +20,6 @@ angular.module('angelApp')
     $scope.isLoggedIn = function () {
       return auth.login()
     }
-    console.log($scope.isLoggedIn())
     $scope.isAdmin = function () {
       return auth.admin()
     }

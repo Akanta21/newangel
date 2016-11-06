@@ -2,41 +2,76 @@ angular.module('angelApp')
 .component('cart', {
   templateUrl: 'components/cart/cart.html',
   controller: function ($scope, $location, $window, $http) {
+    var storedArray
+    var storedData = localStorage.getItem('orderCart')
+    var storedCart = localStorage.getItem('checkout')
     $scope.numbers = []
+    $scope.checkoutCart = []
+    $scope.discountCode
     $scope.discount
     for(var i = 0; i < 21; i++){
       $scope.numbers[i] = 50 * i
     }
     $scope.quantity = 1
-    var storedData = localStorage.getItem("orderCart");
-    console.log(storedData)
     $scope.products = JSON.parse(storedData)
+    $scope.subtotal = localStorage.getItem('subtotal')
+
+    $scope.currentQuantity = function(item){
+      var cartQuantity
+      var checkoutArray = JSON.parse(storedCart)
+      if(!checkoutArray){
+        cartQuantity = 0
+      } else {
+        checkoutArray.filter(function match(cart){
+          // console.log(cart.item)
+          // console.log(item)
+          if(cart.item === item){
+            cartQuantity = cart.quantity
+          }
+        })
+      }
+      // console.log(cartQuantity)
+      return cartQuantity
+    }
+
     $scope.getSubTotal = function() {
+      var subtotal
       if($scope.products === null){
         return 0
       }
       return $scope.products.reduce(function(total,product){
-        if(product.currentQuantity >= 900){
-          $scope.discount = 20
-          return total + (product.currentQuantity * product.price)
-        } else if (product.currentQuantity >= 500) {
-          $scope.discount = 10
-          return total + (product.currentQuantity * product.price)
+        if($scope.discountCode == 'ai@fb'){
+          $scope.discount = 1
+          return total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price) - $scope.discount
         } else {
-          return total + (product.currentQuantity * product.price || 0);//for case when this filed not filled
+          subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
+          console.log(subtotal)
+          localStorage.setItem('Subtotal', subtotal)
+          return (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)|| 0);//for case when this filed not filled
         }
       },0);
     }
-    $scope.removeItem = function(id) {
+
+    $scope.removeItem = function(id, title) {
       function findById(){
         for(var i=0; i<$scope.products.length; i++){
           if($scope.products[i].id === id){
-              console.log(i)
+              return i
+          }
+        }
+      }
+      function findByTitle(){
+        for(var i=0; i<$scope.products.length; i++){
+          if($scope.checkoutCart[i].item === title){
               return i
           }
         }
       }
       $scope.products.splice(findById(),1)
+      $scope.checkoutCart.splice(findByTitle(),1)
+      console.log($scope.products)
+      console.log($scope.checkoutCart)
+      localStorage.setItem('checkout',JSON.stringify($scope.checkoutCart));
       localStorage.setItem('orderCart',JSON.stringify($scope.products));
     }
 
@@ -44,38 +79,85 @@ angular.module('angelApp')
       localStorage.setItem('GST', ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 0.07)
       return (($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 0.07)
     }
+
     $scope.getDiscount = function() {
-      localStorage.setItem('discount', $scope.getSubTotal() * 0.01 * $scope.discount )
-      return ($scope.getSubTotal() * 0.01 * $scope.discount)
+      localStorage.setItem('discount', $scope.discount )
+      return $scope.discount
     }
     $scope.getTotal = function() {
       var total = ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 1.07
       window.localStorage.total = total
       return total
     }
+    // add to checkout
+    $scope.saveOrder = function (title, price) {
+      storedArray = localStorage.getItem('checkout')
+      var data = JSON.parse(storedArray)
+      // function to check if object is in array
+      function containsObject(obj, list) {
+        var i;
+        for (i in list) {
+          if (list[i].item === obj) {
+            return true;
+          }
+        }
+        return false;
+      }
+      // function to replace quantity when it is changed
+      function replaceQuantity(qty, name, list) {
+        // console.log("list", list)
+        list.forEach(function(obj) {
+          if (obj.item === name) obj.quantity = qty;
+        });
+      }
+      this.$watch("product.currentQuantity", function(newValue){
+        if(localStorage.getItem('checkout') && newValue){
+          if(containsObject(title, data)){
+            // console.log(title)
+            replaceQuantity(newValue, title, data)
+            $scope.updatedQuantity = newValue
+          } else {
+            data.push({item:title, price:price, quantity: newValue})
+          }
+          localStorage.setItem('checkout', JSON.stringify(data))
+        } else if(newValue) {
+          if(!containsObject(title, data)){
+            $scope.checkoutCart.push({item:title, price: price, quantity: newValue})
+            localStorage.setItem('checkout', JSON.stringify($scope.checkoutCart))
+          }
+          else{
+            console.log('Halo')
+          }
+        }
+      })
+    }
     $scope.checkout = function() {
       if(localStorage.getItem("auth_token")==null){
         $location.path( "/login" );
       } else {
-        localStorage.setItem('purchasedOrder',JSON.stringify($scope.products));
+        $location.path("/checkout")
+      }
+    }
+    $scope.delivery = function() {
+      if(localStorage.getItem("auth_token")==null){
+        $location.path( "/login" );
+      } else {
         $http({
-          method: 'PATCH',
-          url: 'https://aoimpact.herokuapp.com/addpurchase',
-          headers: {
-            'Auth-Token': window.localStorage.auth_token
-          },
+          method: 'POST',
+          url: 'http://localhost:3000/neworder',
           data: {
-            purchase_history: $scope.products
+            customer_email: localStorage.getItem('email'),
+            orders: localStorage.getItem('checkout'),
+            price: localStorage.getItem('total')
           }
         })
         .success(function () {
-          localStorage.removeItem('purchasedOrder')
+          localStorage.removeItem('checkout')
           localStorage.removeItem('orderCart')
-          location.reload()
-          console.log('updated the user history')
+          $location.path("/delivery")
         })
-        .error(function () {
-          console.log('error')
+        .error(function (data) {
+          console.log(data.error)
         })
       }
     }

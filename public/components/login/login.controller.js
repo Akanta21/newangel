@@ -2,8 +2,9 @@
 angular.module('angelApp')
 .component('login', {
   templateUrl: 'components/login/login.html',
-  controller: function ($http, $window, $location) {
-      this.login = function () {
+  controller: function ($http, $window, $location, $scope) {
+    this.login = function () {
+      var halo = null
       var data = {
         email: this.email,
         password: this.password
@@ -22,9 +23,9 @@ angular.module('angelApp')
         $location.path('/products')
         location.reload()
       })
-      .error(function(response) {
-        console.log(response.err)
-        this.message = response.err
+      .error(function (response) {
+        halo = true
+        $scope.message = response.err
       })
     }
   }

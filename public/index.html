@@ -34,11 +34,6 @@
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.2.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.9/angular-strap.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.9/angular-strap.tpl.min.js"></script>
-  <!-- Stripe integration html tag -->
-  <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  <script src="https://checkout.stripe.com/checkout.js"></script>
-  <script type="text/javascript" src="bower_components/angular-payments/lib/angular-payments.js"> -->
-</script>
 <!-- font-awesome js -->
 <script src="https://use.fontawesome.com/015daf146d.js"></script>
 <!-- component files -->
@@ -52,5 +47,11 @@
 <script src="components/cart/cart.controller.js"></script>
 <script src="components/checkout/checkout.controller.js"></script>
 <script src="components/aboutus/aboutus.controller.js"></script>
+<script src="components/delivery/delivery.controller.js"></script>
+<!-- Stripe.js cdn -->
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_XGg0CLzgN28PTtVMXUFUEdnG');
+</script>
 </body>
 </html>

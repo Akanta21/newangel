@@ -75,6 +75,12 @@ a:hover{
     vertical-align: middle;
     white-space: nowrap;
 }
+.submit-button {
+  margin-top: 10px;
+}
+#payment-form{
+  margin: 10px
+}
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
