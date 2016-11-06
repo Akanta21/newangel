@@ -1,76 +1,78 @@
 <div class="table-responsive">
 
-	<h1>Review Order</h1><hr>
-  <table class="table table-striped table-hover table-bordered">
-    <tbody>
-      <tr>
-        <th class="col-xs-2 col-md-2">Product</th>
-        <th class="col-xs-2 col-md-3">Description</th>
-				<th class="col-xs-2 col-md-2 text-center">Current Quantity</th>
-				<th class="col-xs-2 col-md-2 text-center">Edit Quantity</th>
-        <th class="col-xs-2 col-md-2 text-right">Price</th>
-				<th class="col-xs-2 col-md-1">&nbsp;</th>
-      </tr>
+		<h1>Review Order</h1><hr>
+	  <table class="table table-striped table-hover table-bordered">
+	    <tbody>
+	      <tr>
+	        <th class="col-xs-2 col-md-2">Product</th>
+	        <th class="col-xs-2 col-md-3">Description</th>
+					<th class="col-xs-2 col-md-2 text-center">Current Quantity</th>
+					<th class="col-xs-2 col-md-2 text-center">Edit Quantity</th>
+	        <th class="col-xs-2 col-md-2 text-right">Price</th>
+					<th class="col-xs-2 col-md-1">&nbsp;</th>
+	      </tr>
 
-			<tr ng-repeat="product in products">
-				<td class="col-xs-2 col-md-2">
-					<img src="{{product.picture}}"
-								class="img-responsive"
-								alt="{{product.item}}">
-				</td>
-				<td class="col-xs-3 col-md-3">
-					{{::product.item}}
-				</td>
-				<td class="col-xs-2 col-md-2 text-center">
-					{{cartQuantity ||currentQuantity(product.item)}}
-				</td>
-				<td class="col-xs-2 col-md-2 text-center">
-					<form name="myForm">
-						<label for="mySelect"></label>
-						<select class="dropdown-qty"
-										ng-model="product.currentQuantity"
-										ng-options="number for number in numbers"
-										ng-click="saveOrder(product.item, product.price)">
-						</select>
-					</form>
-				</td>
-				<td class="col-xs-2 col-md-2 text-right">
-					{{product.price * (product.currentQuantity || currentQuantity(product.item)) | currency}}
-				</td>
-				<td class="col-xs-1 col-md-1 text-center">
-					<a ng-click="removeItem(product.id, product.item)"
-						 class="btn btn-danger">
-						 [X]
-					 </a>
-				</td>
-			</tr>
+				<tr ng-repeat="product in products">
+					<td class="col-xs-2 col-md-2">
+						<img src="{{product.picture}}"
+									class="img-responsive"
+									alt="{{product.item}}">
+					</td>
+					<td class="col-xs-3 col-md-3">
+						{{::product.item}}
+					</td>
+					<td class="col-xs-2 col-md-2 text-center">
+						{{cartQuantity ||currentQuantity(product.item)}}
+					</td>
+					<td class="col-xs-2 col-md-2 text-center">
+						<form name="myForm">
+							<label for="mySelect"></label>
+							<select class="dropdown-qty"
+											ng-model="product.currentQuantity"
+											ng-options="number for number in numbers"
+											ng-click="saveOrder(product.item, product.price)">
+							</select>
+						</form>
+					</td>
+					<td class="col-xs-2 col-md-2 text-right">
+						{{product.price * (product.currentQuantity || currentQuantity(product.item)) | currency}}
+					</td>
+					<td class="col-xs-1 col-md-1 text-center">
+						<a ng-click="removeItem(product.id, product.item)"
+							 class="btn btn-danger">
+							 [X]
+						 </a>
+					</td>
+				</tr>
 
-			<tr>
-				<th colspan="3"><span class="pull-right">Sub Total</span></th>
-				<td colspan="3"><span class="pull-right">{{(getSubTotal()) | currency}}</span></td>
-			</tr>
-			<tr>
-				<th colspan="3"><span class="pull-right">Discount Code: </span></th>
-				<th colspan="3"><input type="code" name="code" placeholder="Discount code" class="form-control" ng-model="discountCode"></th>
-			</tr>
-			<tr ng-show="discount">
-				<th colspan="3"><span class="pull-right">Discount: </span></th>
-				<th colspan="3"><span class="pull-right">{{getDiscount() | currency}}</span></th>
-			</tr>
-			<tr>
-				<th colspan="3"><span class="pull-right">GST 7%</span></th>
-				<th colspan="3"><span class="pull-right">{{getGST() | currency}}</span></th>
-			</tr>
-			<tr>
-				<th colspan="3"><span class="pull-right">Indicative total price</span></th>
-				<th colspan="3"><span class="pull-right">{{getTotal() | currency}}</span></th>
-			</tr>
-			<tr>
-				<td colspan="6">
-					<!-- <a href="#/products" class="pull-right btn btn-primary">Continue Shopping</a> -->
-					<a ng-click="delivery()" class="pull-right btn btn-success">Next</a>
-					<!-- <a ng-click="checkout()" class="pull-right btn btn-success">Checkout</a> -->
-				</td>
-			</tr>
-    </tbody>
-  </table>
+				<tr>
+					<th colspan="3"><span class="pull-right">Sub Total</span></th>
+					<td colspan="3"><span class="pull-right">{{(getSubTotal()) | currency}}</span></td>
+				</tr>
+				<tr>
+					<th colspan="3"><span class="pull-right">Discount Code: </span></th>
+					<th colspan="3"><input type="code" name="code" placeholder="Discount code" class="form-control" ng-model="discountCode"></th>
+				</tr>
+				<tr ng-show="discount">
+					<th colspan="3"><span class="pull-right">Discount: </span></th>
+					<th colspan="3"><span class="pull-right">{{getDiscount() | currency}}</span></th>
+				</tr>
+				<tr>
+					<th colspan="3"><span class="pull-right">GST 7%</span></th>
+					<th colspan="3"><span class="pull-right">{{getGST() | currency}}</span></th>
+				</tr>
+				<tr>
+					<th colspan="3"><span class="pull-right">Indicative total price</span></th>
+					<th colspan="3"><span class="pull-right">{{getTotal() | currency}}</span></th>
+				</tr>
+				<tr>
+					<td colspan="6">
+						<!-- <a href="#/products" class="pull-right btn btn-primary">Continue Shopping</a> -->
+						<a ng-click="delivery()" class="pull-right btn btn-success">Next</a>
+						<!-- <a ng-click="checkout()" class="pull-right btn btn-success">Checkout</a> -->
+					</td>
+				</tr>
+	    </tbody>
+	  </table>
+
+</div>
