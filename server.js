@@ -6,12 +6,12 @@ var app = express()
 
 var options = {
   key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.crt')
+  cert: fs.readFileSync('server.crt'),
 }
 const PORT = process.env.PORT || 4000
 
 function requireHTTPS(req, res, next) {
-  if(!req.secure) {
+  if(req.headers['x-forwarded-proto'] != 'https') {
     return res.redirect('https://' + req.get('host') + req.url)
   }
   next()
@@ -24,7 +24,7 @@ app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-// app.listen(PORT, function () {
-//   console.log('Express server is up on port', PORT)
-// })
-https.createServer(options, app).listen(PORT)
+app.listen(PORT, function () {
+  console.log('Express server is up on port', PORT)
+})
+// https.createServer(options, app).listen(PORT)
