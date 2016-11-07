@@ -1,13 +1,8 @@
-var https = require('https')
-var fs = require('fs')
-var express = require('express')
+var express = require('express'),
+   env = process.env.NODE_ENV || 'development';
 var path = require('path')
 var app = express()
 
-var options = {
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.crt'),
-}
 const PORT = process.env.PORT || 4000
 
 function requireHTTPS(req, res, next) {
