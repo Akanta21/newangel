@@ -38,10 +38,6 @@ angular.module('angelApp')
         $http({
           method: 'POST',
           url: 'https://aoimpact.herokuapp.com/payment',
-          // headers: {
-          //   'total': window.localStorage.total,
-          //   'customer_email': window.localStorage.email
-          // },
           data: {
             stripeToken: token_id,
             email: window.localStorage.getItem('email'),
@@ -58,7 +54,8 @@ angular.module('angelApp')
               price: localStorage.getItem('total')
             }
           })
-          .success(function () {
+          .success(function (data) {
+            console.log(data)
             localStorage.removeItem('checkout')
             localStorage.removeItem('orderCart')
             localStorage.removeItem('Subtotal')
