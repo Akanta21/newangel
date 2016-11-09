@@ -52,7 +52,7 @@ angular.module('angelApp')
                 customer_email: localStorage.getItem('email'),
                 orders: localStorage.getItem('checkout'),
                 price: Math.round(localStorage.getItem('total')),
-                paid: true
+                paid: 1
               }
             })
             .success(function (dat) {
