@@ -45,27 +45,27 @@ angular.module('angelApp')
           }
         })
         .success(function (data) {
-          $http({
-            method: 'POST',
-            url: 'https://aoimpact.herokuapp.com/neworder',
-            data: {
-              customer_email: localStorage.getItem('email'),
-              orders: localStorage.getItem('checkout'),
-              price: localStorage.getItem('total')
-            }
-          })
-          .success(function (data) {
-            console.log(data)
-            localStorage.removeItem('checkout')
-            localStorage.removeItem('orderCart')
-            localStorage.removeItem('Subtotal')
-            localStorage.removeItem('total')
-            localStorage.removeItem('GST')
-            $location.path("/delivery")
-          })
-          .error(function (data) {
-            console.log(data.error)
-          })
+            $http({
+              method: 'POST',
+              url: 'https://aoimpact.herokuapp.com/neworder',
+              data: {
+                customer_email: localStorage.getItem('email'),
+                orders: localStorage.getItem('checkout'),
+                price: localStorage.getItem('total')
+              }
+            })
+            .success(function (dat) {
+              console.log(dat)
+              localStorage.removeItem('checkout')
+              localStorage.removeItem('orderCart')
+              localStorage.removeItem('Subtotal')
+              localStorage.removeItem('total')
+              localStorage.removeItem('GST')
+              $location.path("/delivery")
+            })
+            .error(function (data) {
+              console.log(data.error)
+            })
         })
         .error(function (response) {
           console.log(response.error)
