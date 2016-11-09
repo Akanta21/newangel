@@ -41,7 +41,7 @@ angular.module('angelApp')
           data: {
             stripeToken: token_id,
             email: window.localStorage.getItem('email'),
-            total: window.localStorage.getItem('total') * 100
+            total: Math.round(window.localStorage.getItem('total') * 100)
           }
         })
         .success(function (data) {
