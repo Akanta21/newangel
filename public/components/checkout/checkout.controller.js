@@ -51,7 +51,7 @@ angular.module('angelApp')
         .success(function (data) {
           $http({
             method: 'POST',
-            url: 'http://localhost:3000/neworder',
+            url: 'http://aoimpact.herokuapp.com/neworder',
             data: {
               customer_email: localStorage.getItem('email'),
               orders: localStorage.getItem('checkout'),
