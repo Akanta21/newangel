@@ -51,7 +51,8 @@ angular.module('angelApp')
               data: {
                 customer_email: localStorage.getItem('email'),
                 orders: localStorage.getItem('checkout'),
-                price: localStorage.getItem('total')
+                price: Math.round(localStorage.getItem('total')),
+                payment: true
               }
             })
             .success(function (dat) {
