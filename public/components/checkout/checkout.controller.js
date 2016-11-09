@@ -61,6 +61,9 @@ angular.module('angelApp')
           .success(function () {
             localStorage.removeItem('checkout')
             localStorage.removeItem('orderCart')
+            localStorage.removeItem('Subtotal')
+            localStorage.removeItem('total')
+            localStorage.removeItem('GST')
             $location.path("/delivery")
           })
           .error(function (data) {
