@@ -10,7 +10,7 @@ angular.module('angelApp')
     $scope.discountCode
     $scope.discount
     for(var i = 0; i < 21; i++){
-      $scope.numbers[i] = 50 * i
+      $scope.numbers[i] = i
     }
     $scope.quantity = 1
     $scope.products = JSON.parse(storedData)

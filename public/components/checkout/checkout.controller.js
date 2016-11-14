@@ -38,34 +38,35 @@ angular.module('angelApp')
         $http({
           method: 'POST',
           url: 'https://aoimpact.herokuapp.com/payment',
-          // headers: {
-          //   'total': window.localStorage.total,
-          //   'customer_email': window.localStorage.email
-          // },
           data: {
             stripeToken: token_id,
             email: window.localStorage.getItem('email'),
-            total: window.localStorage.getItem('total') * 100
+            total: Math.round(window.localStorage.getItem('total') * 100)
           }
         })
         .success(function (data) {
-          $http({
-            method: 'POST',
-            url: 'http://localhost:3000/neworder',
-            data: {
-              customer_email: localStorage.getItem('email'),
-              orders: localStorage.getItem('checkout'),
-              price: localStorage.getItem('total')
-            }
-          })
-          .success(function () {
-            localStorage.removeItem('checkout')
-            localStorage.removeItem('orderCart')
-            $location.path("/delivery")
-          })
-          .error(function (data) {
-            console.log(data.error)
-          })
+            $http({
+              method: 'POST',
+              url: 'https://aoimpact.herokuapp.com/neworder',
+              data: {
+                customer_email: localStorage.getItem('email'),
+                orders: localStorage.getItem('checkout'),
+                price: Math.round(localStorage.getItem('total')),
+                paid: 1
+              }
+            })
+            .success(function (dat) {
+              console.log(dat)
+              localStorage.removeItem('checkout')
+              localStorage.removeItem('orderCart')
+              localStorage.removeItem('Subtotal')
+              localStorage.removeItem('total')
+              localStorage.removeItem('GST')
+              $location.path("/delivery")
+            })
+            .error(function (data) {
+              console.log(data.error)
+            })
         })
         .error(function (response) {
           console.log(response.error)
