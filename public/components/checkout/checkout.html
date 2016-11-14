@@ -7,18 +7,34 @@
     </div>
     <div class="col-md-4"></div>
   </div>
+
   <div class="center-block container">
     <h1 class="text-center" style="color: #083858">Checkout</h1>
   </div>
   <div class='form-row col-md-12'>
     <div class="col-md-4"></div>
     <div class="col-md-4 form-group required">
-      <label class="control-label">Card Number</label>
-      <input autocomplete='off' class='form-control card-number' size='20' type="text" size="20" data-stripe="number">
+      <label class="ccjs-number">Card Number</label>
+      <input name="card-number" autocomplete='off' class='form-control ccjs-number card-number' size='20' type="text" size="20" data-stripe="number" placeholder="•••• •••• •••• ••••">
     </div>
     <div class="col-md-4"></div>
   </div>
-
+  <div class='form-row col-md-12'>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 form-group required">
+      <div class='form-row col-md-12'>
+        <div class="col-md-4"></div>
+        <div class="col-md-4 form-group required">
+          <label class="ccjs-name">
+            Name on Card
+            <input name="name" class="ccjs-name">
+          </label>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
   <div class="form-row col-md-12">
     <div class="col-md-4"></div>
     <div class='col-md-2 form-group expiration required'>
@@ -44,7 +60,7 @@
   <div class='form-row col-md-12'>
     <div class="col-md-4"></div>
     <div class='col-md-4'>
-      <div class='form-control total btn btn-primary'>
+      <div class='form-control total'>
         Total:<span class='amount'>{{total | currency}}</span>
       </div>
     </div>
