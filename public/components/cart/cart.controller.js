@@ -74,18 +74,12 @@ angular.module('angelApp')
       localStorage.setItem('checkout',JSON.stringify($scope.checkoutCart));
       localStorage.setItem('orderCart',JSON.stringify($scope.products));
     }
-
-    $scope.getGST = function() {
-      localStorage.setItem('GST', ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 0.07)
-      return (($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 0.07)
-    }
-
     $scope.getDiscount = function() {
       localStorage.setItem('discount', $scope.discount )
       return $scope.discount
     }
     $scope.getTotal = function() {
-      var total = ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal()) * 1.07
+      var total = ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal())
       window.localStorage.total = total
       return total
     }
