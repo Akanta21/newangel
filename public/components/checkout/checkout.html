@@ -24,7 +24,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 form-group required">
       <label class="ccjs-name">Name on Card</label>
-      <input name="name" class="ccjs-name">
+      <input name="name" class='form-control ccjs-name card-number' type="text" size="20">
     </div>
     <div class="col-md-4"></div>
   </div>
@@ -54,7 +54,7 @@
   <div class='form-row col-md-12'>
     <div class="col-md-4"></div>
     <div class='col-md-4'>
-      <div class='form-control btn total disabled'>
+      <div class='form-control btn-primary total disabled'>
         Total:<span class='amount'>{{total | currency}}</span>
       </div>
     </div>
