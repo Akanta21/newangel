@@ -9,7 +9,7 @@ angular.module('angelApp')
     $scope.checkoutCart = []
     $scope.discountCode
     $scope.discount
-    $scope.delivery
+    $scope.deliveryAdd
     for(var i = 0; i < 21; i++){
       $scope.numbers[i] = i
     }
@@ -80,12 +80,12 @@ angular.module('angelApp')
       return $scope.discount
     }
     $scope.getDelivery = function() {
-      localStorage.setItem('delivery', $scope.delivery)
-      const deliveryCost = $scope.delivery * 10
+      localStorage.setItem('delivery', $scope.deliveryAdd)
+      const deliveryCost = $scope.deliveryAdd * 10
       return deliveryCost
     }
     $scope.getTotal = function() {
-      var total = ($scope.getSubTotal() - $scope.getDiscount() || $scope.getSubTotal())
+      var total = ($scope.getSubTotal() - $scope.getDiscount() + $scope.getDelivery() || $scope.getSubTotal() + $scope.getDelivery())
       window.localStorage.total = total
       return total
     }
