@@ -1,0 +1,19 @@
+<br />
+<div class="container">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <th>Customer Email</th>
+      <th>Orders</th>
+      <th>Total Price($)</th>
+      <th>Date of Purchase</th>
+    </thead>
+    <tbody ng-repeat="order in orders">
+      <tr>
+        <td class="col-md-3">{{order.customer_email}}</td>
+        <td class="col-md-3">{{::order.orders}}</td>
+        <td class="col-md-3">{{::order.price | currency}}</td>
+        <td class="col-md-3">{{order.updated_at | limitTo:10}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

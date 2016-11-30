@@ -12,8 +12,8 @@
       <figure class="figure col-md-12">
         <img ng-src="{{product.picture}}" class="img-responsive" alt="A generic square placeholder image with rounded corners in a figure.">
       </figure>
-      
-      <figcaption class="figure-caption col-md-12">{{product.title| limitTo:20}} {{product.description .length > 20 ? '...' : ''}}</figcaption>
+
+      <figcaption class="figure-caption col-md-12">{{product.title| limitTo:20}} {{product.description.length > 20 ? '...' : ''}}</figcaption>
 
       <div class="col-md-12">
         <a class="like-post" ng-click="interest(product._id, product.stock+1)">

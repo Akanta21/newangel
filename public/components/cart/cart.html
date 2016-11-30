@@ -1,6 +1,8 @@
 <div class="table-responsive">
 
-		<h1>Review Order</h1><hr>
+		<h1>Review Order</h1>
+		<a class="btn btn-danger" href="#/orders" ng-show="isAdmin()">Clients' orders</a>
+		<hr>
 	  <table class="table table-striped table-hover table-bordered">
 	    <tbody>
 	      <tr>
@@ -58,7 +60,7 @@
 					<th colspan="3"><span class="pull-right">{{getDiscount() | currency}}</span></th>
 				</tr>
 				<tr ng-show="delivery">
-					<th colspan="3"><span class="pull-right">No of delivery places: ($10 per delivery location)</span></th>
+					<th colspan="3"><span class="pull-right">No of delivery places: ($25 per delivery location)</span></th>
 					<th colspan="1"><input type="no" name="no" placeholder="no of locations" class="form-control" ng-model="deliveryAdd"></th>
 					<th colspan="2"><span class="pull-right">{{getDelivery() | currency}}</span></th>
 				</tr>

@@ -1,7 +1,10 @@
 angular.module('angelApp')
 .component('cart', {
   templateUrl: 'components/cart/cart.html',
-  controller: function ($scope, $location, $window, $http) {
+  controller: function ($scope, $location, $window, $http, auth) {
+    $scope.isAdmin = function () {
+      return auth.admin()
+    }
     var storedArray
     var storedData = localStorage.getItem('orderCart')
     var storedCart = localStorage.getItem('checkout')
@@ -81,7 +84,7 @@ angular.module('angelApp')
     }
     $scope.getDelivery = function() {
       localStorage.setItem('delivery', $scope.deliveryAdd)
-      const deliveryCost = $scope.deliveryAdd * 10
+      const deliveryCost = $scope.deliveryAdd * 25
       return deliveryCost
     }
     $scope.getTotal = function() {
