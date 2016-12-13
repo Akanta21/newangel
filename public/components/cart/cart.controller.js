@@ -44,9 +44,10 @@ angular.module('angelApp')
         return 0
       }
       return $scope.products.reduce(function(total,product){
-        if($scope.discountCode == 'ai@fb'){
-          $scope.discount = 1
-          return total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price) - $scope.discount
+        console.log($scope.subtotal)
+        if($scope.discountCode == 'AICHRISTMAS' && $scope.subtotal > 800){
+          $scope.discount = 0.95
+          return (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)) * $scope.discount
         } else {
           subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
           console.log(subtotal)
