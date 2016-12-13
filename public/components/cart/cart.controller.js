@@ -18,7 +18,7 @@ angular.module('angelApp')
     }
     $scope.quantity = 1
     $scope.products = JSON.parse(storedData)
-    $scope.subtotal = localStorage.getItem('subtotal')
+    $scope.subtotal = localStorage.getItem('Subtotal')
 
     $scope.currentQuantity = function(item){
       var cartQuantity
