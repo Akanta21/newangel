@@ -38,9 +38,8 @@ angular.module('angelApp')
 
     $scope.getSubTotal = function() {
       var subtotal
-      console.log($scope.products)
+      // console.log($scope.products)
       if($scope.products == (null || [])){
-        console.log('empty')
         subtotal = 0
         localStorage.setItem('subtotal', subtotal)
         return 0
@@ -54,6 +53,7 @@ angular.module('angelApp')
     }
 
     $scope.removeItem = function(id, title) {
+      console.log(title)
       function findById(){
         for(var i=0; i<$scope.products.length; i++){
           if($scope.products[i].id === id){
