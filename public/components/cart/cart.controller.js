@@ -38,7 +38,8 @@ angular.module('angelApp')
 
     $scope.getSubTotal = function() {
       var subtotal
-      if($scope.products === null){
+      console.log($scope.products)
+      if($scope.products === null || []){
         subtotal = 0
         localStorage.setItem('subtotal', subtotal)
         return 0
