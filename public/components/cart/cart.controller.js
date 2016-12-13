@@ -18,7 +18,7 @@ angular.module('angelApp')
     }
     $scope.quantity = 1
     $scope.products = JSON.parse(storedData)
-    $scope.subtotal = localStorage.getItem('Subtotal')
+    $scope.subtotal = localStorage.getItem('subtotal')
 
     $scope.currentQuantity = function(item){
       var cartQuantity
@@ -44,17 +44,11 @@ angular.module('angelApp')
         return 0
       }
       return $scope.products.reduce(function(total,product){
-        console.log($scope.subtotal)
-        if($scope.discountCode == 'AICHRISTMAS' && $scope.subtotal > 800){
-          $scope.discount = 0.95
-          return (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)) * $scope.discount
-        } else {
           subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
           console.log(subtotal)
-          localStorage.setItem('Subtotal', subtotal)
+          localStorage.setItem('subtotal', subtotal)
           return (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)|| 0);//for case when this filed not filled
-        }
-      },0);
+        } ,0);
     }
 
     $scope.removeItem = function(id, title) {
@@ -80,8 +74,12 @@ angular.module('angelApp')
       localStorage.setItem('orderCart',JSON.stringify($scope.products));
     }
     $scope.getDiscount = function() {
-      localStorage.setItem('discount', $scope.discount )
-      return $scope.discount
+      if($scope.discountCode == 'ai@fb' && $scope.subtotal > 800){
+        $scope.discount = $scope.subtotal * 0.05
+        localStorage.setItem('discount', $scope.discount )
+        return $scope.discount
+      }
+      return 0
     }
     $scope.getDelivery = function() {
       localStorage.setItem('delivery', $scope.deliveryAdd)
