@@ -77,8 +77,8 @@ angular.module('angelApp')
     $scope.getDiscount = function() {
       console.log($scope.discountCode)
       console.log($scope.subtotal)
-      if($scope.discountCode == 'AICHRISTMAS' && $scope.subtotal > 800){
-        $scope.discount = $scope.subtotal * 0.05
+      if($scope.discountCode == 'AICHRISTMAS'){
+        $scope.discount = $scope.subtotal * 0.15
         localStorage.setItem('discount', $scope.discount)
         return $scope.discount
       }
