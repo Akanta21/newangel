@@ -56,14 +56,14 @@
 					<th colspan="3"><input type="code" name="code" placeholder="Discount code" class="form-control" ng-model="discountCode"></th>
 				</tr>
 				<tr ng-show="discount">
-					<th colspan="3"><span class="pull-right">Discount: </span></th>
-					<th colspan="3"><span class="pull-right">{{getDiscount() | currency}}</span></th>
+					<th colspan="3"><span>Discount: </span></th>
+					<th colspan="3"><span>{{getDiscount() | currency}}</span></th>
 				</tr>
 				<tr ng-show="delivery">
 					<th colspan="3">
 						<span>No of delivery places: ($10 per delivery location)</span>
 						<br/>
-						<span>*If you do not have any locations to deliver to, please add a 0 in the delivery option dropdown.</span>
+						<span>*If you do not have any locations to deliver to, please add a 0 in the delivery option</span>
 				</th>
 					<th colspan="1"><input type="number" value="1" class="form-control" ng-model="deliveryAdd"></th>
 					<th colspan="2"><span class="pull-right">{{getDelivery() | currency}}</span></th>

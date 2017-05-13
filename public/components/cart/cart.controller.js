@@ -32,7 +32,6 @@ angular.module('angelApp')
           }
         })
       }
-      // console.log(cartQuantity)
       return cartQuantity
     }
 
