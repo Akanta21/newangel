@@ -113,7 +113,6 @@ angular.module('angelApp')
       }
       // function to replace quantity when it is changed
       function replaceQuantity(qty, name, list) {
-        // console.log("list", list)
         list.forEach(function(obj) {
           if (obj.item === name) obj.quantity = qty;
         });
@@ -121,7 +120,6 @@ angular.module('angelApp')
       this.$watch("product.currentQuantity", function(newValue){
         if(localStorage.getItem('checkout') && newValue){
           if(containsObject(title, data)){
-            // console.log(title)
             replaceQuantity(newValue, title, data)
             $scope.updatedQuantity = newValue
           } else {
@@ -146,28 +144,28 @@ angular.module('angelApp')
         $location.path("/checkout")
       }
     }
-    $scope.delivery = function() {
-      if(localStorage.getItem("auth_token")==null){
-        $location.path( "/login" );
-      } else {
-        $http({
-          method: 'POST',
-          url: 'http://localhost:3000/neworder',
-          data: {
-            customer_email: localStorage.getItem('email'),
-            orders: localStorage.getItem('checkout'),
-            price: localStorage.getItem('total')
-          }
-        })
-        .success(function () {
-          localStorage.removeItem('checkout')
-          localStorage.removeItem('orderCart')
-          $location.path("/delivery")
-        })
-        .error(function (data) {
-          console.log(data.error)
-        })
-      }
-    }
+  //   $scope.delivery = function() {
+  //     if(localStorage.getItem("auth_token")==null){
+  //       $location.path( "/login" );
+  //     } else {
+  //       $http({
+  //         method: 'POST',
+  //         url: 'http://localhost:3000/neworder',
+  //         data: {
+  //           customer_email: localStorage.getItem('email'),
+  //           orders: localStorage.getItem('checkout'),
+  //           price: localStorage.getItem('total')
+  //         }
+  //       })
+  //       .success(function () {
+  //         localStorage.removeItem('checkout')
+  //         localStorage.removeItem('orderCart')
+  //         $location.path("/delivery")
+  //       })
+  //       .error(function (data) {
+  //         console.log(data.error)
+  //       })
+  //     }
+  //   }
   }
 })
