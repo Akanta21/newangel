@@ -50,7 +50,7 @@ angular.module('angelApp')
           localStorage.setItem('subtotal', subtotal)
           $scope.getDiscount()
           const totalPrice = (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)|| 0)
-
+          console.log(totalPrice)
           if (totalPrice === 0) {
             localStorage.setItem('subtotal', 0)
             $scope.getDiscount()
@@ -61,7 +61,6 @@ angular.module('angelApp')
     }
 
     $scope.removeItem = function(id, title) {
-      console.log(title)
       function findById(){
         for(var i=0; i<$scope.products.length; i++){
           if($scope.products[i].id === id){
@@ -83,7 +82,6 @@ angular.module('angelApp')
       localStorage.setItem('orderCart',JSON.stringify($scope.products));
     }
     $scope.getDiscount = function() {
-      console.log($scope.discountCode)
       $scope.subtotal = localStorage.getItem('subtotal')
       if($scope.discountCode === 'aimember'){
         $scope.discount = $scope.subtotal * 0.05
@@ -101,7 +99,6 @@ angular.module('angelApp')
     }
     $scope.getTotal = function() {
       var total = ($scope.getSubTotal() - $scope.getDiscount() + $scope.getDelivery() || $scope.getSubTotal() + $scope.getDelivery())
-      console.log(total)
       window.localStorage.total = total
       return total
     }
