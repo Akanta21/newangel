@@ -42,6 +42,7 @@ angular.module('angelApp')
         localStorage.setItem('subtotal', subtotal)
         return 0
       }
+      console.log($scope.discountCode)
       if ($scope.discountCode === 'aimember'){
         $scope.discount = $scope.subtotal * 0.05
         localStorage.setItem('discount', $scope.discount)
