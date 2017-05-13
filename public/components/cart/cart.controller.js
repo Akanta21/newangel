@@ -50,6 +50,7 @@ angular.module('angelApp')
           localStorage.setItem('subtotal', subtotal)
           $scope.getDiscount()
           const totalPrice = (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)|| 0)
+          console.log(subtotal)
           console.log(totalPrice, total)
           if (totalPrice === undefined) {
             localStorage.setItem('subtotal', 0)
