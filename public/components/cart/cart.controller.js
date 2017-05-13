@@ -46,11 +46,11 @@ angular.module('angelApp')
         $scope.discount = $scope.subtotal * 0.05
         localStorage.setItem('discount', $scope.discount)
       }
-      $scope.getDiscount()
       return $scope.products.reduce(function(total,product){
           subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
 
           localStorage.setItem('subtotal', subtotal)
+          $scope.getDiscount()
           return (total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)|| 0);//for case when this filed not filled
         } ,0);
     }
