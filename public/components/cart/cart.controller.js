@@ -38,14 +38,12 @@ angular.module('angelApp')
       var subtotal
       if ($scope.products == (null || [])){
         subtotal = 0
+        console.log('product is zero')
         localStorage.setItem('subtotal', subtotal)
+        $scope.getDiscount()
         return 0
       }
       console.log($scope.discountCode)
-      if ($scope.discountCode === 'aimember'){
-        $scope.discount = $scope.subtotal * 0.05
-        localStorage.setItem('discount', $scope.discount)
-      }
       return $scope.products.reduce(function(total,product){
           subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
 
