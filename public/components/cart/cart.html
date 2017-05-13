@@ -48,16 +48,16 @@
 				</tr>
 
 				<tr>
-					<th colspan="3"><span class="pull-right">Sub Total</span></th>
+					<th colspan="3"><span>Sub Total</span></th>
 					<td colspan="3"><span class="pull-right">{{(getSubTotal()) | currency}}</span></td>
 				</tr>
 				<tr>
-					<th colspan="3"><span class="pull-right">Discount Code: </span></th>
+					<th colspan="3"><span>Discount Code: </span></th>
 					<th colspan="3"><input type="code" name="code" placeholder="Discount code" class="form-control" ng-model="discountCode"></th>
 				</tr>
 				<tr ng-show="discount">
 					<th colspan="3"><span>Discount: </span></th>
-					<th colspan="3"><span>{{getDiscount() | currency}}</span></th>
+					<th colspan="3"><span class="pull-right">{{getDiscount() | currency}}</span></th>
 				</tr>
 				<tr ng-show="delivery">
 					<th colspan="3">
