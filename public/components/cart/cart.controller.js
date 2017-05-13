@@ -18,7 +18,6 @@ angular.module('angelApp')
     }
     $scope.quantity = 1
     $scope.products = JSON.parse(storedData)
-    $scope.subtotal = localStorage.getItem('subtotal')
 
     $scope.currentQuantity = function(item){
       var cartQuantity
@@ -47,6 +46,7 @@ angular.module('angelApp')
         $scope.discount = $scope.subtotal * 0.05
         localStorage.setItem('discount', $scope.discount)
       }
+      $scope.getDiscount()
       return $scope.products.reduce(function(total,product){
           subtotal = total + ((product.currentQuantity || $scope.currentQuantity(product.item)) * product.price)
 
@@ -79,7 +79,7 @@ angular.module('angelApp')
     }
     $scope.getDiscount = function() {
       console.log($scope.discountCode)
-      console.log($scope.subtotal)
+      $scope.subtotal = localStorage.getItem('subtotal')
       if($scope.discountCode === 'aimember'){
         $scope.discount = $scope.subtotal * 0.05
         localStorage.setItem('discount', $scope.discount)
