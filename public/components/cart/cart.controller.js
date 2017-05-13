@@ -101,7 +101,6 @@ angular.module('angelApp')
     $scope.saveOrder = function (title, price) {
       storedArray = localStorage.getItem('checkout')
       var data = JSON.parse(storedArray)
-      // function to check if object is in array
       function containsObject(obj, list) {
         var i;
         for (i in list) {
